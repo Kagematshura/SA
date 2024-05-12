@@ -1,0 +1,105 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="aston-maritin.css">
+</head>
+<body>
+    
+        <div class="carList">
+            <a href="payment.html" target="_blank">
+                <h3>Aston Martin DB12</h3>
+            </a>
+            <div class="carDetails">
+                <p>Price: $799 999</p>
+                <p>Year: 2015</p>
+                <p>Condition: New</p>
+            </div>
+            <img src="lib/db12/IMG-20240430-WA0006.jpg" alt="">
+        </div>
+
+        <div class="carList">
+            <a href="payment.html" target="_blank">
+                <h3>Aston Martin Vulcan</h3>
+            </a>
+            <div class="carDetails">
+                <p>Price: $799 999</p>
+                <p>Year: 2015</p>
+                <p>Condition: New</p>
+            </div>
+            <img src="lib/vulcan/IMG-20240430-WA0013.jpg" alt="">
+        </div>
+
+        <div class="carList">
+            <a href="payment.html" target="_blank">
+                <h3>Aston Martin Valkyrie</h3>
+            </a>
+            <div class="carDetails">
+                <p>Price: $799 999</p>
+                <p>Year: 2015</p>
+                <p>Condition: New</p>
+            </div>
+            <img src="lib/valkyrie/IMG-20240430-WA0010.jpg" alt="">
+        </div>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="aston-maritin.css">
+</head>
+<body>
+    
+    <div id="app">
+        <div class="carList" v-for="(car, index) in cars" :key="index">
+            <a :href="'payment.html?car=' + car.name" target="_blank">
+                <h3>{{ car.name }}</h3>
+            </a>
+            <div class="carDetails">
+                <p>Price: {{ car.price }}</p>
+                <p>Year: {{ car.year }}</p>
+                <p>Condition: {{ car.condition }}</p>
+            </div>
+            <img :src="car.image" :alt="car.name">
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                cars: [
+                    {
+                        name: 'Aston Martin DB12',
+                        price: '$799 999',
+                        year: '2015',
+                        condition: 'New',
+                        image: 'lib/db12/IMG-20240430-WA0006.jpg'
+                    },
+                    {
+                        name: 'Aston Martin Vulcan',
+                        price: '$799 999',
+                        year: '2015',
+                        condition: 'New',
+                        image: 'lib/vulcan/IMG-20240430-WA0013.jpg'
+                    },
+                    {
+                        name: 'Aston Martin Valkyrie',
+                        price: '$799 999',
+                        year: '2015',
+                        condition: 'New',
+                        image: 'lib/valkyrie/IMG-20240430-WA0010.jpg'
+                    }
+                ]
+            }
+        });
+    </script>
+</body>
+</html>
