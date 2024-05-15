@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="aston-maritin.css">
+    <link rel="stylesheet" href="aston-martin.css">
 </head>
 <body>
     
@@ -34,9 +34,6 @@
 
                 <label for="cardNumber">Card Number:</label>
                 <input type="text" id="cardNumber" v-model="paymentData.cardNumber" required><br>
-
-                <label for="expiry">Expiry:</label>
-                <input type="text" id="expiry" v-model="paymentData.expiry" required><br>
 
                 <button type="submit">Pay</button>
             </form>
@@ -76,31 +73,28 @@
                     name: '',
                     email: '',
                     cardNumber: '',
-                    expiry: ''
                 }
             },
             methods: {
                 showPaymentForm(car) {
                     this.showForm = true;
-                    // You can do something with the selected car if needed
+
                 },
                 processPayment() {
-                    // Here you can implement your payment processing logic
-                    // For demonstration purposes, let's just log the payment data
-                    console.log('Payment data:', this.paymentData);
-                    // You may also want to reset the form and hide it after successful payment
+
+                    // console.log('Payment data:', this.paymentData);
+
                     this.paymentData = {
                         name: '',
                         email: '',
                         cardNumber: '',
-                        expiry: ''
                     };
                     this.showForm = false;
-                    // Optionally, you can redirect the user to a thank you page
-                    // window.location.href = 'thankyou.html';
+
                 }
             }
         });
     </script>
+    <script src="aston-martin.js"></script>
 </body>
 </html>
