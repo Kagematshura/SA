@@ -19,11 +19,11 @@
                 <p>Condition: {{ car.condition }}</p>
             </div>
             <img :src="car.image" :alt="car.name">
-            <button @click="showPaymentForm(car)">Make Payment</button>
+            <button @click="showPaymentForm(car)" id="openBtn">Make Payment</button>
         </div>
 
         <!-- Payment Form -->
-        <div v-if="showForm" class="paymentForm">
+        <div v-if="showForm" class="paymentForm" id="payment">
             <h3>Payment Form</h3>
             <form @submit.prevent="processPayment">
                 <label for="name">Name:</label>
@@ -95,6 +95,6 @@
             }
         });
     </script>
-    <script src="aston-martin.js"></script>
+    <!-- <script src="aston-martin.js"></script> -->
 </body>
 </html>

@@ -1,10 +1,10 @@
 // script.js
 
 // Get the modal
-var modal = document.getElementById("myModal");
+var modal = document.getElementById("payment");
 
 // Get the button that opens the modal
-var btn = document.getElementById("openModalBtn");
+var btn = document.getElementById("openBtn");
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
