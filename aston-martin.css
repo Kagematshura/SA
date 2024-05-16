@@ -1,4 +1,4 @@
-.carList {
+/* .carList {
     background-color: #f2f2f2;
     padding: 20px;
     margin-bottom: 20px;
@@ -14,4 +14,102 @@
 .carList img {
     max-width: 350px;
     height: auto;
+}
+ */
+ body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+.carList {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    padding: 20px;
+    transition: box-shadow 0.3s;
+}
+.carList:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.carList h3 {
+    color: #333;
+    margin: 0 0 10px;
+}
+.carDetails p {
+    margin: 5px 0;
+    color: #666;
+}
+.carDetails p strong {
+    color: #333;
+}
+.carList img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    display: block;
+    margin: 10px 0;
+}
+.carList button {
+    background-color: #007bff;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 0;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+.carList button:hover {
+    background-color: #0056b3;
+}
+.paymentForm {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 400px;
+}
+.paymentForm h3 {
+    color: #333;
+    margin: 0 0 10px;
+}
+.paymentForm form {
+    display: flex;
+    flex-direction: column;
+}
+.paymentForm label {
+    margin: 10px 0 5px;
+    color: #333;
+}
+.paymentForm input {
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.paymentForm button {
+    background-color: #28a745;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 0;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+.paymentForm button:hover {
+    background-color: #218838;
 }

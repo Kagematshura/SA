@@ -17,9 +17,10 @@
                 <p>Price: {{ car.price }}</p>
                 <p>Year: {{ car.year }}</p>
                 <p>Condition: {{ car.condition }}</p>
+                <p>Stock: {{ car.stock }}</p>
             </div>
             <img :src="car.image" :alt="car.name">
-            <button @click="showPaymentForm(car)" id="openBtn">Make Payment</button>
+            <button @click="showPaymentForm(car)" id="openBtn"><a href="#payment">Make Payment</a></button>
         </div>
 
         <!-- Payment Form -->
@@ -50,12 +51,14 @@
                         name: 'Aston Martin DB12',
                         price: '$799 999',
                         year: '2015',
+                        stock: 5,
                         condition: 'New',
                         image: 'lib/db12/IMG-20240430-WA0006.jpg'
                     },
                     {
                         name: 'Aston Martin Vulcan',
                         price: '$799 999',
+                        stock: 5,
                         year: '2015',
                         condition: 'New',
                         image: 'lib/vulcan/IMG-20240430-WA0013.jpg'
@@ -63,6 +66,7 @@
                     {
                         name: 'Aston Martin Valkyrie',
                         price: '$799 999',
+                        stock: 5,
                         year: '2015',
                         condition: 'New',
                         image: 'lib/valkyrie/IMG-20240430-WA0010.jpg'
