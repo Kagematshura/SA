@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="aston-martin.css">
 </head>
 <body>
-    
     <div id="app">
         <div class="carList" v-for="(car, index) in cars" :key="index">
             <h3>{{ car.name }}</h3>
@@ -21,13 +20,44 @@
             <button @click="addToCart(car)">Add to Cart</button>
         </div>
 
+        <!-- Filter Layout -->
+        <div class="filterLayout">
+            <h3>Filters</h3>
+            <div>
+                <label for="condition">Condition:</label>
+                <select id="condition">
+                    <option value="new">New</option>
+                    <option value="used">Used</option>
+                </select>
+            </div>
+            <div>
+                <label for="year">Year:</label>
+                <select id="year">
+                    <option value="2015">2015</option>
+                    <option value="2016">2016</option>
+                    <option value="2017">2017</option>
+                    <!-- Add more years as needed -->
+                </select>
+            </div>
+            <div>
+                <label for="priceRange">Price Range:</label>
+                <input type="range" id="priceRange" min="0" max="1000000" step="1000">
+            </div>
+        </div>
+
+        <!-- Show Cart Button -->
+        <button @click="toggleCart" class="showCartBtn">
+            {{ cartVisible ? 'Hide Cart' : 'Show Cart' }} ({{ cart.length }})
+        </button>
+
         <!-- Cart -->
-        <div v-if="cart.length > 0" class="cart">
+        <div v-if="cartVisible" class="cart">
             <h3>Shopping Cart</h3>
             <div v-for="(car, index) in cart" :key="index" class="cartItem">
                 <p>{{ car.name }} - {{ car.price }}</p>
                 <button @click="removeFromCart(index)">Remove</button>
             </div>
+            <p>Total Price: {{ totalPrice }}</p>
             <button @click="showPaymentForm()">Proceed to Payment</button>
         </div>
 
@@ -84,12 +114,22 @@
                     }
                 ],
                 cart: [],
+                cartVisible: false,
                 showForm: false,
                 paymentData: {
                     name: '',
                     email: '',
                     cardNumber: '',
                     address: ''
+                }
+            },
+            computed: {
+                totalPrice() {
+                    return this.cart.reduce((total, car) => {
+                        // Remove the comma and dollar sign, and convert to a number
+                        let price = parseFloat(car.price.replace(/[$,]/g, ''));
+                        return total + price;
+                    }, 0).toLocaleString('en-US', { style: 'currency', currency: 'USD' });
                 }
             },
             methods: {
@@ -99,13 +139,17 @@
                 removeFromCart(index) {
                     this.cart.splice(index, 1);
                 },
+                toggleCart() {
+                    this.cartVisible = !this.cartVisible;
+                },
                 showPaymentForm() {
                     this.showForm = true;
                 },
                 processPayment() {
-                    
+                    // Implement payment processing logic here
                     console.log('Payment data:', this.paymentData);
 
+                    // Reset payment data and hide form
                     this.paymentData = {
                         name: '',
                         email: '',
