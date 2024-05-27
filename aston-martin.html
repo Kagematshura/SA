@@ -8,6 +8,23 @@
 </head>
 <body>
     <div id="app">
+
+        <button @click="toggleCart" class="showCartBtn">
+            {{ cartVisible ? 'Hide Cart' : 'Show Cart' }} ({{ cart.length }})
+        </button>
+
+        <div v-if="cartVisible" class="cart">
+            <h3>Shopping Cart</h3>
+            <div v-for="(car, index) in cart" :key="index" class="cartItem">
+                <p>{{ car.name }} - {{ car.price }}</p>
+                <button @click="removeFromCart(index)">Remove</button>
+            </div>
+            <p>Total Price: {{ totalPrice }}</p>
+            <div class="proceedBtn">
+                <button @click="showPaymentForm()"><a href="#payment">Proceed to Payment</a></button>
+            </div>
+        </div>
+
         <div class="carList" v-for="(car, index) in cars" :key="index">
             <h3>{{ car.name }}</h3>
             <div class="carDetails">
@@ -20,7 +37,6 @@
             <button @click="addToCart(car)">Add to Cart</button>
         </div>
 
-        <!-- Filter Layout -->
         <div class="filterLayout">
             <h3>Filters</h3>
             <div>
@@ -33,10 +49,13 @@
             <div>
                 <label for="year">Year:</label>
                 <select id="year">
-                    <option value="2015">2015</option>
                     <option value="2016">2016</option>
                     <option value="2017">2017</option>
-                    <!-- Add more years as needed -->
+                    <option value="2018">2016</option>
+                    <option value="2019">2019</option>
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
+                    <option value="2022">2022</option>
                 </select>
             </div>
             <div>
@@ -45,23 +64,7 @@
             </div>
         </div>
 
-        <!-- Show Cart Button -->
-        <button @click="toggleCart" class="showCartBtn">
-            {{ cartVisible ? 'Hide Cart' : 'Show Cart' }} ({{ cart.length }})
-        </button>
 
-        <!-- Cart -->
-        <div v-if="cartVisible" class="cart">
-            <h3>Shopping Cart</h3>
-            <div v-for="(car, index) in cart" :key="index" class="cartItem">
-                <p>{{ car.name }} - {{ car.price }}</p>
-                <button @click="removeFromCart(index)">Remove</button>
-            </div>
-            <p>Total Price: {{ totalPrice }}</p>
-            <button @click="showPaymentForm()">Proceed to Payment</button>
-        </div>
-
-        <!-- Payment Form -->
         <div v-if="showForm" class="paymentForm" id="payment">
             <h3>Payment Form</h3>
             <form @submit.prevent="processPayment">
@@ -77,7 +80,7 @@
                 <label for="cardNumber">Credit Card Details:</label>
                 <input type="text" id="cardNumber" v-model="paymentData.cardNumber" required><br>
 
-                <button type="submit">Pay</button>
+                <button type="submit"><a href="payment.html">Proceed Payment</a></button>
             </form>
         </div>
     </div>
@@ -90,25 +93,25 @@
                 cars: [
                     {
                         name: 'Aston Martin DB12',
-                        price: '$799,999',
-                        year: '2015',
+                        price: '$60,999',
+                        year: '2019',
                         stock: 5,
                         condition: 'New',
                         image: 'lib/db12/IMG-20240430-WA0006.jpg'
                     },
                     {
                         name: 'Aston Martin Vulcan',
-                        price: '$799,999',
+                        price: '$2,399,000',
                         stock: 5,
-                        year: '2015',
+                        year: '2017',
                         condition: 'New',
                         image: 'lib/vulcan/IMG-20240430-WA0013.jpg'
                     },
                     {
                         name: 'Aston Martin Valkyrie',
-                        price: '$799,999',
+                        price: '$3,499,999',
                         stock: 5,
-                        year: '2015',
+                        year: '2017',
                         condition: 'New',
                         image: 'lib/valkyrie/IMG-20240430-WA0010.jpg'
                     }
@@ -146,10 +149,8 @@
                     this.showForm = true;
                 },
                 processPayment() {
-                    // Implement payment processing logic here
                     console.log('Payment data:', this.paymentData);
 
-                    // Reset payment data and hide form
                     this.paymentData = {
                         name: '',
                         email: '',

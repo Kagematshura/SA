@@ -98,6 +98,89 @@
     border-radius: 4px;
     transition: background-color 0.3s;
 }
+
+.paymentForm button a{
+    text-decoration: none;
+    color:#333;
+}
 .paymentForm button:hover {
     background-color: #218838;
+}
+
+/* Styles for filter Layout */
+.filterLayout {
+    /* background-color: #fff; */
+    border-radius: 8px;
+    padding: 20px;
+    width: 90%;
+
+}
+
+.filterLayout h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.filterLayout label {
+    font-weight: bold;
+}
+
+.filterLayout select,
+.filterLayout input[type="range"] {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+/* Styles for shopping cart */
+.cart {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 30%;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cart h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.cartItem {
+    margin-bottom: 10px;
+}
+
+.cartItem p {
+    margin: 0;
+    color: #666;
+}
+
+.cartItem button {
+    background-color: #dc3545;
+}
+
+.cartItem button:hover {
+    background-color: #c82333;
+}
+
+.showCartBtn {
+    background-color: #28a745;
+    margin-bottom: 20px;
+}
+
+.showCartBtn:hover {
+    background-color: #218838;
+}
+
+.proceedBtn button{
+    background-color: #007bff;
+}
+
+.proceedBtn button a{
+    color: #fff;
+    text-decoration: none;
 }
