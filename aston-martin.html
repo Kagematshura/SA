@@ -3,15 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Aston Martin Showroom</title>
     <link rel="stylesheet" href="aston-martin.css">
 </head>
 <body>
     
     <div id="app">
         <div class="carList" v-for="(car, index) in cars" :key="index">
-                <h3>{{ car.name }}</h3>
-            </a>
+            <h3>{{ car.name }}</h3>
             <div class="carDetails">
                 <p>Price: {{ car.price }}</p>
                 <p>Year: {{ car.year }}</p>
@@ -19,7 +18,17 @@
                 <p>Stock: {{ car.stock }}</p>
             </div>
             <img :src="car.image" :alt="car.name">
-            <button @click="showPaymentForm(car)" id="openBtn"><a href="#payment">Make Payment</a></button>
+            <button @click="addToCart(car)">Add to Cart</button>
+        </div>
+
+        <!-- Cart -->
+        <div v-if="cart.length > 0" class="cart">
+            <h3>Shopping Cart</h3>
+            <div v-for="(car, index) in cart" :key="index" class="cartItem">
+                <p>{{ car.name }} - {{ car.price }}</p>
+                <button @click="removeFromCart(index)">Remove</button>
+            </div>
+            <button @click="showPaymentForm()">Proceed to Payment</button>
         </div>
 
         <!-- Payment Form -->
@@ -32,8 +41,8 @@
                 <label for="email">Email:</label>
                 <input type="email" id="email" v-model="paymentData.email" required><br>
 
-                <label for="email">Address:</label>
-                <input type="email" id="address" v-model="paymentData.address" required><br>
+                <label for="address">Address:</label>
+                <input type="text" id="address" v-model="paymentData.address" required><br>
 
                 <label for="cardNumber">Credit Card Details:</label>
                 <input type="text" id="cardNumber" v-model="paymentData.cardNumber" required><br>
@@ -51,7 +60,7 @@
                 cars: [
                     {
                         name: 'Aston Martin DB12',
-                        price: '$799 999',
+                        price: '$799,999',
                         year: '2015',
                         stock: 5,
                         condition: 'New',
@@ -59,7 +68,7 @@
                     },
                     {
                         name: 'Aston Martin Vulcan',
-                        price: '$799 999',
+                        price: '$799,999',
                         stock: 5,
                         year: '2015',
                         condition: 'New',
@@ -67,13 +76,14 @@
                     },
                     {
                         name: 'Aston Martin Valkyrie',
-                        price: '$799 999',
+                        price: '$799,999',
                         stock: 5,
                         year: '2015',
                         condition: 'New',
                         image: 'lib/valkyrie/IMG-20240430-WA0010.jpg'
                     }
                 ],
+                cart: [],
                 showForm: false,
                 paymentData: {
                     name: '',
@@ -83,13 +93,18 @@
                 }
             },
             methods: {
-                showPaymentForm(car) {
+                addToCart(car) {
+                    this.cart.push(car);
+                },
+                removeFromCart(index) {
+                    this.cart.splice(index, 1);
+                },
+                showPaymentForm() {
                     this.showForm = true;
-
                 },
                 processPayment() {
-
-                    // console.log('Payment data:', this.paymentData);
+                    
+                    console.log('Payment data:', this.paymentData);
 
                     this.paymentData = {
                         name: '',
@@ -98,11 +113,10 @@
                         address: ''
                     };
                     this.showForm = false;
-
+                    this.cart = [];
                 }
             }
         });
     </script>
-    <!-- <script src="aston-martin.js"></script> -->
 </body>
 </html>
